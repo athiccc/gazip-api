@@ -19,7 +19,7 @@ app.listen(4099, ()=> {
     console.log('API running At localhost:4099')
 })
 
-mongoose.connect(`mongodb://localhost:64954/loopback2`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb://localhost:27017/loopback2`, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection
 .once('open', () => console.log('Database is connected!'))
 .on('error', (error) => {
