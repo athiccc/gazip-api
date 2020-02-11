@@ -11,10 +11,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.listen(3009, ()=> {
-    console.log('API running At localhost:3009')
+    console.log('API running At localhost:4009')
 })
 
-mongoose.connect(`mongodb://localhost:27017/gazipDB`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb://localhost:27017/testgzDB`, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection
   .once('open', () => console.log('Database is connected!'))
   .on('error', (error) => {
