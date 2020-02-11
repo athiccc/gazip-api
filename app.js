@@ -19,7 +19,7 @@ app.listen(4099, ()=> {
     console.log('API running At localhost:4099')
 })
 
-mongoose.connect(`mongodb://localhost:27017/loopback2`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb://localhost:64954/loopback2`, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection
 .once('open', () => console.log('Database is connected!'))
 .on('error', (error) => {
@@ -60,6 +60,13 @@ app.get('/api/raw-data', async(req, res) => {
     const query = req.query.title ? { title: { $regex: req.query.title, $options: 'i' } } : {}
     const data = await Raws.find(query)
     res.send(data)
+})
+
+app.get('/api/ask-rumors', async(req, res) => {
+    const query = req.query.title ? { title: { $not: { $regex: req.query.title, $options: 'i' } } } : {}
+    const data = await Raws.find(query)
+    const randInt = Math.floor(Math.random() * Math.floor(data.length))
+    res.send(data[randInt])
 })
 
 app.get('/api/rumors', async(req, res) => {
