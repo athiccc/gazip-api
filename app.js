@@ -10,8 +10,8 @@ app.use(cors({ origin: true }));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.listen(3009, ()=> {
-    console.log('API running At localhost:4009')
+app.listen(4099, ()=> {
+    console.log('API running At localhost:4099')
 })
 
 mongoose.connect(`mongodb://localhost:27017/testgzDB`, { useNewUrlParser: true, useUnifiedTopology: true })
