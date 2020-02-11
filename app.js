@@ -35,7 +35,7 @@ const Trends = mongoose.model('trend', trendSchema)
 //////////
 app.get('/api/news', async(req, res) => {
     const query = req.query.title ? { title: { $regex: req.query.title, $options: 'i' } } : {}
-    const data = await News.find(query)
+    const data = await News.find(query).sort({ createdAt: -1 })
     res.send(data)
 })
 
