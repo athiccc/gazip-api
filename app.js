@@ -62,6 +62,11 @@ app.get('/api/raw-data', async(req, res) => {
     res.send(data)
 })
 
+app.get('/api/rumors', async(req, res) => {
+    const data = await Raws.create({ title: req.query.title, description: req.query.description })
+    res.send(data)
+})
+
 app.post('/api/raw-data', async(req, res) => {
     const data = await Raws.create(req.body)
     res.send(data)
@@ -86,6 +91,7 @@ app.get('/api/res-msg', async(req, res) => {
         const randInt = Math.floor(Math.random() * Math.floor(data.length))
         res.send(data[randInt])
     }else{
+        await Raws.create({ title: req.query.title, description: "บอทตอบไม่ได้" })
         res.send({description: "เรื่องนี้เรายังไม่รู้เลยอ่ะ เดี๋ยวเราไปหาข่าวก่อน ><"})
     }
 })
